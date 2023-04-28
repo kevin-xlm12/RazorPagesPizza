@@ -19,9 +19,9 @@ public enum PizzaSize{Small, Medium, Large }
 
 public  class PizzaService
 {
-    static List<Pizza> Pizzas { get; }
+    public List<Pizza> Pizzas { get; }
     public int nextId = 3;
-    static PizzaService()
+    public PizzaService()
     {
         Pizzas = new List<Pizza>
                 {
@@ -32,15 +32,15 @@ public  class PizzaService
 
     public static List<Pizza> GetAll() => Pizzas;
 
-    public static Pizza? Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
+    public static  Pizza? Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
 
-    public static void Add(Pizza pizza)
+    public  void Add(Pizza pizza)
     {
         pizza.Id = nextId++;
         Pizzas.Add(pizza);
     }
 
-    public static void Delete(int id)
+    public  void Delete(int id)
     {
         var pizza = Get(id);
         if (pizza is null)
@@ -49,7 +49,7 @@ public  class PizzaService
         Pizzas.Remove(pizza);
     }
 
-    public static void Update(Pizza pizza)
+    public  void Update(Pizza pizza)
     {
         var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
         if (index == -1)
